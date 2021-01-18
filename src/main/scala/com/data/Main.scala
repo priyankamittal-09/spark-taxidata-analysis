@@ -10,17 +10,6 @@ import org.apache.spark.sql.types.{DateType, LongType, StructType}
 
 object Main extends App{
 
-/*  val taxiDataPath = "src/main/resources/ny_taxi_test_data/ny_taxi"
-  val zonesDataPath = "src/main/resources/ny_taxi_test_data/ny_zones/ny_taxi_zones.csv"
-  val rtbfDataPath = "src/main/resources/ny_taxi_test_data/ny_taxi_rtbf/rtbf_taxies.csv"
-
-  val insight1Path = "src/main/resources/ny_taxi_insights/insight1"
-  val insight2Path = "src/main/resources/ny_taxi_insights/insight2"
-  val insight3Path = "src/main/resources/ny_taxi_insights/insight3"
-  val insight4Path = "src/main/resources/ny_taxi_insights/insight4"
-  val insight5Path = "src/main/resources/ny_taxi_insights/insight5"
-  val insight6Path = "src/main/resources/ny_taxi_insights/insight6"*/
-
   var taxiDataPath = ""
   var zonesDataPath = ""
   var rtbfDataPath = ""
@@ -118,7 +107,6 @@ object Main extends App{
       ny_zones
     }
   }
-
 
   // TODO Task 4: Now we can process the data; filter the ny_taxi data between the dates 2015-01-15 to 2015-02-15 using the tpep_pickup_datetime column.
   // TODO Task 5: Filter right to be forgotten taxi_ids. Remove all rows that have a taxi_id that is in the ny_taxi_rtbf list.
