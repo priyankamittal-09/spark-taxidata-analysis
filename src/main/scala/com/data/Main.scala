@@ -10,6 +10,8 @@ import org.apache.spark.sql.types.{DateType, LongType, StructType}
 
 object Main extends App{
 
+  implicit val logger = Logger.getLogger(this.getClass)
+
   var taxiDataPath = ""
   var zonesDataPath = ""
   var rtbfDataPath = ""
@@ -38,7 +40,6 @@ object Main extends App{
 
   val log_level = "info"
 
-  implicit val logger = Logger.getLogger(this.getClass)
 
   (for {
     ny_taxi_original <- readTaxiData(taxiDataPath)
