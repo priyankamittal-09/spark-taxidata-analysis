@@ -1,0 +1,385 @@
+number_of_dropoffs,pickup_zone,dropoff_zone,rank
+3,Upper East Side South,Midtown Center,1
+2,Upper East Side South,Lenox Hill West,2
+2,Upper East Side South,Upper East Side North,2
+1,Upper East Side South,Upper West Side North,4
+1,Upper East Side South,Lenox Hill East,4
+1,Upper East Side South,Upper West Side South,4
+1,Upper East Side South,Lincoln Square East,4
+1,Upper East Side South,East Harlem North,4
+1,Upper East Side South,Union Sq,4
+1,Upper East Side South,Garment District,4
+2,TriBeCa/Civic Center,Little Italy/NoLiTa,1
+1,TriBeCa/Civic Center,Clinton East,2
+1,TriBeCa/Civic Center,Meatpacking/West Village West,2
+1,TriBeCa/Civic Center,Clinton Hill,2
+1,TriBeCa/Civic Center,Murray Hill,2
+2,Yorkville West,Upper East Side North,1
+1,Yorkville West,Lenox Hill East,2
+1,Yorkville West,Seaport,2
+1,Yorkville West,Midtown South,2
+1,Yorkville West,TriBeCa/Civic Center,2
+1,Yorkville West,Lincoln Square West,2
+2,Upper West Side North,Lincoln Square West,1
+2,Upper West Side North,Yorkville East,1
+2,Upper West Side North,Lincoln Square East,1
+1,Upper West Side North,Central Park,4
+1,Upper West Side North,Lenox Hill East,4
+1,Upper West Side North,Upper East Side North,4
+1,Upper West Side North,Washington Heights North,4
+1,Upper West Side North,Morningside Heights,4
+1,Upper West Side North,Clinton West,4
+1,Upper West Side North,Manhattan Valley,4
+1,Upper West Side North,Upper West Side South,4
+1,Upper West Side North,Upper West Side North,4
+1,Upper West Side North,Yorkville West,4
+1,Upper West Side North,Meatpacking/West Village West,4
+1,Hudson Sq,Battery Park City,1
+1,Lenox Hill East,Sutton Place/Turtle Bay North,1
+1,Lenox Hill East,JFK Airport,1
+1,Lenox Hill East,East Harlem North,1
+3,Upper East Side North,Midtown East,1
+2,Upper East Side North,Upper East Side South,2
+2,Upper East Side North,Lenox Hill West,2
+2,Upper East Side North,Lincoln Square West,2
+2,Upper East Side North,Upper East Side North,2
+1,Prospect Park,East Williamsburg,1
+2,UN/Turtle Bay South,Upper East Side North,1
+1,UN/Turtle Bay South,Murray Hill,2
+1,UN/Turtle Bay South,East Chelsea,2
+1,UN/Turtle Bay South,Gramercy,2
+1,UN/Turtle Bay South,Times Sq/Theatre District,2
+1,UN/Turtle Bay South,Garment District,2
+4,Union Sq,Greenwich Village North,1
+2,Union Sq,West Chelsea/Hudson Yards,2
+2,Union Sq,Murray Hill,2
+1,Union Sq,JFK Airport,4
+1,Union Sq,Lenox Hill West,4
+1,Union Sq,Midtown Center,4
+1,Union Sq,Eltingville/Annadale/Prince's Bay,4
+1,Union Sq,Garment District,4
+1,Union Sq,Bloomingdale,4
+1,Union Sq,East Chelsea,4
+1,Union Sq,Times Sq/Theatre District,4
+7,"","",1
+1,Bloomingdale,Central Harlem North,1
+2,Midtown East,Clinton East,1
+1,Midtown East,Upper East Side North,2
+1,Midtown East,Midtown East,2
+1,Midtown East,Sutton Place/Turtle Bay North,2
+1,Midtown East,Midtown Center,2
+1,Midtown East,Midtown South,2
+1,Midtown East,Flatiron,2
+1,Midtown East,Lenox Hill West,2
+1,Sunset Park West,Park Slope,1
+1,East Harlem North,East Harlem North,1
+1,East Harlem North,East Harlem South,1
+1,East Harlem North,Midtown South,1
+1,Washington Heights South,JFK Airport,1
+1,Washington Heights South,Bloomingdale,1
+2,Sutton Place/Turtle Bay North,Lincoln Square East,1
+1,Sutton Place/Turtle Bay North,Upper East Side North,2
+1,Sutton Place/Turtle Bay North,Times Sq/Theatre District,2
+1,Sutton Place/Turtle Bay North,Sutton Place/Turtle Bay North,2
+1,Sutton Place/Turtle Bay North,UN/Turtle Bay South,2
+1,Sutton Place/Turtle Bay North,Lenox Hill West,2
+1,Sutton Place/Turtle Bay North,Midtown East,2
+1,Sutton Place/Turtle Bay North,Upper West Side North,2
+2,LaGuardia Airport,TriBeCa/Civic Center,1
+2,LaGuardia Airport,JFK Airport,1
+1,LaGuardia Airport,Murray Hill,3
+1,LaGuardia Airport,Bellerose,3
+1,LaGuardia Airport,Midtown North,3
+1,LaGuardia Airport,Lenox Hill West,3
+1,LaGuardia Airport,Union Sq,3
+1,LaGuardia Airport,UN/Turtle Bay South,3
+1,LaGuardia Airport,Clinton East,3
+1,LaGuardia Airport,Midtown Center,3
+1,Astoria,Steinway,1
+1,Cobble Hill,Boerum Hill,1
+1,Garment District,Alphabet City,1
+1,Garment District,Penn Station/Madison Sq West,1
+1,Lower East Side,Central Harlem,1
+1,Lower East Side,UN/Turtle Bay South,1
+1,Lower East Side,East Harlem South,1
+1,Lower East Side,East Village,1
+1,Lower East Side,Crown Heights North,1
+1,Lower East Side,East Elmhurst,1
+1,Lower East Side,Upper West Side South,1
+2,East Village,Gramercy,1
+1,East Village,Alphabet City,2
+1,East Village,Elmhurst/Maspeth,2
+1,East Village,Upper West Side South,2
+1,East Village,Midtown South,2
+1,East Village,Murray Hill,2
+1,East Village,Meatpacking/West Village West,2
+1,East Village,Bushwick South,2
+1,East Village,Lower East Side,2
+1,East Village,Prospect Park,2
+1,East Village,West Village,2
+1,East Village,East Chelsea,2
+1,East Village,Williamsburg (South Side),2
+1,East Village,Chinatown,2
+1,Fort Greene,Upper East Side South,1
+2,Lincoln Square East,Upper West Side South,1
+2,Lincoln Square East,Midtown East,1
+2,Lincoln Square East,Midtown Center,1
+1,Lincoln Square East,East Village,4
+1,Lincoln Square East,East Chelsea,4
+1,Lincoln Square East,Flatiron,4
+1,Lincoln Square East,Clinton East,4
+1,Lincoln Square East,Washington Heights North,4
+1,Lincoln Square East,Lincoln Square East,4
+1,Lincoln Square East,Central Park,4
+1,Gramercy,Penn Station/Madison Sq West,1
+1,Gramercy,Lenox Hill East,1
+1,Gramercy,Murray Hill,1
+1,Gramercy,Flatiron,1
+1,Gramercy,Greenwich Village South,1
+1,Gramercy,West Village,1
+1,Gramercy,Lower East Side,1
+1,Gramercy,Parkchester,1
+1,Gramercy,Gramercy,1
+1,Gramercy,Midtown North,1
+1,Gramercy,Meatpacking/West Village West,1
+1,Gramercy,LaGuardia Airport,1
+1,Gramercy,Midtown South,1
+1,Gramercy,UN/Turtle Bay South,1
+1,Manhattan Valley,East Harlem North,1
+1,Manhattan Valley,Central Park,1
+1,Manhattan Valley,Upper East Side South,1
+1,Manhattan Valley,Morningside Heights,1
+2,Midtown South,Midtown Center,1
+1,Midtown South,Midtown South,2
+1,Midtown South,Financial District South,2
+1,Midtown South,East Harlem North,2
+1,Midtown South,Clinton West,2
+1,Midtown South,Penn Station/Madison Sq West,2
+1,Midtown South,Greenwich Village South,2
+1,Midtown South,Lenox Hill West,2
+1,Midtown South,West Chelsea/Hudson Yards,2
+1,Midtown South,Midtown East,2
+1,Midtown South,Garment District,2
+1,Midtown South,Long Island City/Queens Plaza,2
+2,Battery Park City,Times Sq/Theatre District,1
+1,Battery Park City,SoHo,2
+1,Battery Park City,Central Harlem North,2
+1,Battery Park City,TriBeCa/Civic Center,2
+1,Battery Park City,Erasmus,2
+1,South Williamsburg,South Williamsburg,1
+1,Chinatown,Park Slope,1
+1,Chinatown,Fort Greene,1
+2,Midtown North,TriBeCa/Civic Center,1
+1,Midtown North,LaGuardia Airport,2
+1,Midtown North,West Village,2
+1,Midtown North,Midtown Center,2
+1,Midtown North,Manhattanville,2
+1,Midtown North,Sutton Place/Turtle Bay North,2
+1,Midtown North,Two Bridges/Seward Park,2
+1,Midtown North,East Harlem South,2
+1,Midtown North,Flushing,2
+1,Midtown North,UN/Turtle Bay South,2
+1,Midtown North,Flatiron,2
+1,Midtown North,Lincoln Square West,2
+2,West Village,Lenox Hill West,1
+1,West Village,SoHo,2
+1,West Village,Bushwick North,2
+1,West Village,West Chelsea/Hudson Yards,2
+1,West Village,Midtown East,2
+1,West Village,Penn Station/Madison Sq West,2
+1,West Village,East Chelsea,2
+1,West Village,Garment District,2
+1,West Village,Hudson Sq,2
+1,West Village,East Village,2
+1,West Village,Stuy Town/Peter Cooper Village,2
+1,West Village,Flatiron,2
+1,West Village,Alphabet City,2
+1,West Village,TriBeCa/Civic Center,2
+1,Brooklyn Heights,West Chelsea/Hudson Yards,1
+2,Kips Bay,East Village,1
+1,Kips Bay,Williamsburg (South Side),2
+1,Kips Bay,Midtown East,2
+1,Kips Bay,Midtown Center,2
+1,Kips Bay,Lincoln Square East,2
+1,Kips Bay,Lenox Hill East,2
+1,Kips Bay,Clinton East,2
+1,Kips Bay,Midtown South,2
+1,Financial District South,Upper East Side South,1
+1,Financial District South,TriBeCa/Civic Center,1
+1,Financial District South,Midtown Center,1
+1,Little Italy/NoLiTa,SoHo,1
+1,Little Italy/NoLiTa,Red Hook,1
+1,Little Italy/NoLiTa,East Village,1
+1,Little Italy/NoLiTa,Lower East Side,1
+2,Midtown Center,Clinton East,1
+2,Midtown Center,Midtown East,1
+2,Midtown Center,LaGuardia Airport,1
+2,Midtown Center,Murray Hill,1
+1,Midtown Center,Times Sq/Theatre District,5
+1,Midtown Center,Upper West Side North,5
+1,Midtown Center,Lincoln Square East,5
+1,Midtown Center,Greenpoint,5
+1,Midtown Center,Sutton Place/Turtle Bay North,5
+1,Midtown Center,Penn Station/Madison Sq West,5
+1,Midtown Center,Yorkville East,5
+1,Midtown Center,UN/Turtle Bay South,5
+1,Midtown Center,Upper East Side North,5
+1,Midtown Center,Midtown North,5
+1,Midtown Center,Union Sq,5
+1,Greenwich Village South,Clinton East,1
+1,Greenwich Village South,East Village,1
+1,Greenwich Village South,Greenwich Village South,1
+1,Greenwich Village South,Meatpacking/West Village West,1
+1,Greenwich Village South,Kips Bay,1
+3,Lenox Hill West,Upper East Side South,1
+2,Lenox Hill West,Midtown North,2
+2,Lenox Hill West,Upper East Side North,2
+2,Lenox Hill West,Lenox Hill West,2
+1,Lenox Hill West,Lenox Hill East,5
+1,Lenox Hill West,Manhattan Valley,5
+1,Alphabet City,Two Bridges/Seward Park,1
+1,Alphabet City,Gramercy,1
+1,Flatiron,SoHo,1
+1,Flatiron,Union Sq,1
+1,Flatiron,Alphabet City,1
+1,Flatiron,Greenwich Village North,1
+1,Flatiron,Gramercy,1
+1,Flatiron,Greenwich Village South,1
+1,Flatiron,Midtown North,1
+1,Flatiron,Garment District,1
+1,Flatiron,Midtown South,1
+1,Flatiron,World Trade Center,1
+1,Flatiron,TriBeCa/Civic Center,1
+1,Flatiron,Kips Bay,1
+1,Meatpacking/West Village West,Battery Park City,1
+1,Meatpacking/West Village West,Meatpacking/West Village West,1
+1,Meatpacking/West Village West,Astoria,1
+1,Meatpacking/West Village West,Clinton Hill,1
+1,Upper West Side South,Clinton East,1
+1,Upper West Side South,Yorkville West,1
+1,Upper West Side South,Morningside Heights,1
+1,Upper West Side South,Upper East Side North,1
+1,Upper West Side South,Upper West Side North,1
+1,Central Park,Manhattan Valley,1
+1,Central Park,Times Sq/Theatre District,1
+1,Central Park,Greenwich Village North,1
+1,Central Park,East Harlem North,1
+1,Central Park,East Chelsea,1
+1,Central Park,Meatpacking/West Village West,1
+1,Central Park,Lincoln Square East,1
+2,Clinton East,Upper East Side North,1
+1,Clinton East,Union Sq,2
+1,Clinton East,Forest Hills,2
+1,Clinton East,Central Harlem,2
+1,Clinton East,Central Park,2
+1,Clinton East,Clinton West,2
+1,Clinton East,Battery Park City,2
+1,Clinton East,Garment District,2
+1,Clinton East,Upper West Side South,2
+1,Clinton East,Coney Island,2
+1,Clinton East,Times Sq/Theatre District,2
+1,Clinton East,University Heights/Morris Heights,2
+1,Clinton East,Midtown Center,2
+1,Clinton East,Murray Hill,2
+1,Clinton East,Lenox Hill West,2
+1,Clinton East,Clinton East,2
+1,Clinton East,Midtown South,2
+1,SoHo,Hudson Sq,1
+1,SoHo,Times Sq/Theatre District,1
+1,SoHo,Seaport,1
+1,SoHo,Midtown Center,1
+1,SoHo,Park Slope,1
+1,SoHo,Lower East Side,1
+1,SoHo,JFK Airport,1
+1,SoHo,West Village,1
+1,Queensbridge/Ravenswood,Long Island City/Queens Plaza,1
+1,Queensbridge/Ravenswood,Long Island City/Hunters Point,1
+1,Manhattanville,East Chelsea,1
+1,Williamsburg (North Side),Boerum Hill,1
+2,Penn Station/Madison Sq West,Flatiron,1
+2,Penn Station/Madison Sq West,Union Sq,1
+1,Penn Station/Madison Sq West,Lenox Hill West,3
+1,Penn Station/Madison Sq West,TriBeCa/Civic Center,3
+1,Penn Station/Madison Sq West,Lincoln Square East,3
+1,Penn Station/Madison Sq West,Kips Bay,3
+1,Penn Station/Madison Sq West,West Village,3
+1,Penn Station/Madison Sq West,Alphabet City,3
+1,Penn Station/Madison Sq West,Midtown Center,3
+1,Penn Station/Madison Sq West,Murray Hill,3
+1,Penn Station/Madison Sq West,Downtown Brooklyn/MetroTech,3
+1,Penn Station/Madison Sq West,Astoria,3
+1,Penn Station/Madison Sq West,Times Sq/Theatre District,3
+1,Penn Station/Madison Sq West,Sunnyside,3
+1,Penn Station/Madison Sq West,Midtown South,3
+1,Penn Station/Madison Sq West,Yorkville West,3
+1,Penn Station/Madison Sq West,Gramercy,3
+1,Penn Station/Madison Sq West,Greenwich Village North,3
+1,Central Harlem,Central Harlem North,1
+1,Central Harlem,Manhattanville,1
+1,Lincoln Square West,East Chelsea,1
+1,Lincoln Square West,Lincoln Square East,1
+1,Lincoln Square West,Midtown Center,1
+1,Lincoln Square West,West Chelsea/Hudson Yards,1
+1,Lincoln Square West,Yorkville East,1
+1,Greenwich Village North,Flatiron,1
+1,Greenwich Village North,Financial District South,1
+1,Greenwich Village North,West Village,1
+1,Greenwich Village North,Brooklyn Heights,1
+1,Greenwich Village North,Garment District,1
+1,Greenwich Village North,Penn Station/Madison Sq West,1
+1,Greenwich Village North,East Village,1
+2,Murray Hill,Garment District,1
+2,Murray Hill,Sutton Place/Turtle Bay North,1
+1,Murray Hill,East Harlem South,3
+1,Murray Hill,East Village,3
+1,Murray Hill,Yorkville West,3
+1,Murray Hill,Midtown North,3
+1,Murray Hill,Lincoln Square East,3
+1,West Chelsea/Hudson Yards,West Chelsea/Hudson Yards,1
+1,West Chelsea/Hudson Yards,Clinton East,1
+1,West Chelsea/Hudson Yards,World Trade Center,1
+1,West Chelsea/Hudson Yards,East Chelsea,1
+1,West Chelsea/Hudson Yards,Upper West Side South,1
+1,West Chelsea/Hudson Yards,Penn Station/Madison Sq West,1
+1,West Chelsea/Hudson Yards,Midtown South,1
+1,Williamsburg (South Side),Greenpoint,1
+1,Clinton West,Clinton West,1
+1,Clinton West,Midtown North,1
+1,Clinton West,Penn Station/Madison Sq West,1
+1,Clinton West,TriBeCa/Civic Center,1
+1,Clinton West,Central Park,1
+1,Forest Hills,Forest Hills,1
+3,Times Sq/Theatre District,Penn Station/Madison Sq West,1
+2,Times Sq/Theatre District,Murray Hill,2
+2,Times Sq/Theatre District,Central Park,2
+2,Times Sq/Theatre District,Clinton West,2
+2,Times Sq/Theatre District,Midtown East,2
+4,East Chelsea,West Chelsea/Hudson Yards,1
+2,East Chelsea,Meatpacking/West Village West,2
+2,East Chelsea,Midtown Center,2
+1,East Chelsea,Yorkville West,4
+1,East Chelsea,Midtown East,4
+1,East Chelsea,West Village,4
+1,East Chelsea,Clinton East,4
+1,East Chelsea,Midtown North,4
+1,East Chelsea,Times Sq/Theatre District,4
+1,East Chelsea,East Village,4
+1,East Chelsea,UN/Turtle Bay South,4
+1,East Chelsea,Lower East Side,4
+1,East Chelsea,Clinton West,4
+1,Central Harlem North,Central Harlem North,1
+1,Financial District North,Lenox Hill East,1
+1,Hamilton Heights,Hamilton Heights,1
+1,Hamilton Heights,West Chelsea/Hudson Yards,1
+1,JFK Airport,Murray Hill,1
+1,JFK Airport,Financial District North,1
+1,JFK Airport,Upper East Side North,1
+1,Park Slope,Elmhurst,1
+1,Morningside Heights,Upper West Side North,1
+1,Morningside Heights,Upper East Side South,1
+1,Greenpoint,Williamsburg (North Side),1
+2,Yorkville East,East Harlem South,1
+2,Yorkville East,Upper West Side North,1
+1,Yorkville East,East Village,3
+1,Yorkville East,Times Sq/Theatre District,3
+1,Yorkville East,Morningside Heights,3
