@@ -129,11 +129,8 @@ class MainSpec extends Specification with AfterAll {
     val data_path = "src/test/resources/ny_taxi_data_large/ny_taxi"
     val rtbf_path = "src/test/resources/ny_taxi_data_large/ny_taxi_rtbf/rtbf_taxies.csv"
     val result = Main.filteredTaxiData(Main.readTaxiData(data_path).run(spark), Main.readRightToBeForgottenData(rtbf_path).run(spark)).run(spark)
-
     val calculated = result.collectAsList()
     val expected = ReadWriteUtils.readCSV(spark, taxiEncoderSchema, "src/test/resources/ny_taxi_data_large/ny_taxi_filtered_data").as[TaxiData].collectAsList()
-    logger.debug(s"Calculated: $calculated")
-    logger.debug(s"Expected: $expected")
     calculated.asScala must beEqualTo(expected.asScala)
   }
 
