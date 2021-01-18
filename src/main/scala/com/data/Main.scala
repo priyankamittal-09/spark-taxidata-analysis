@@ -3,7 +3,6 @@ package com.data
 import com.data.utils.ReadWriteUtils
 import com.data.model.{DropOffTaxiData, PickDropTaxiData, PickupTaxiData, TaxiData}
 import org.apache.log4j.{Level, Logger}
-import org.apache.spark.sql.catalyst.ScalaReflection
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.{DataFrame, Dataset, Encoders, SparkSession}
 import org.apache.spark.sql.functions.{count, _}
@@ -11,7 +10,7 @@ import org.apache.spark.sql.types.{DateType, LongType, StructType}
 
 object Main extends App{
 
-/*  val taxiDataPath = "src/main/resources/ny_taxi_data_large/ny_taxi"
+/*  val taxiDataPath = "src/main/resources/ny_taxi_test_data/ny_taxi"
   val zonesDataPath = "src/main/resources/ny_taxi_test_data/ny_zones/ny_taxi_zones.csv"
   val rtbfDataPath = "src/main/resources/ny_taxi_test_data/ny_taxi_rtbf/rtbf_taxies.csv"
 
@@ -76,11 +75,9 @@ object Main extends App{
   // TODO Read taxi data
   def readTaxiData(path: String)(implicit logger:Logger): SparkSessionReader[Dataset[TaxiData]] = {
     SparkSessionReader { spark =>
-      val encoderSchema = Encoders.product[TaxiData].schema
-      val schema = ScalaReflection.schemaFor[TaxiData].dataType.asInstanceOf[StructType]
       val ny_taxi_original = spark
         .read
-        .schema(taxiSchema)
+        .schema(taxiEncoderSchema)
         .parquet(path)
         .as[TaxiData]
         .filter($"trip_distance">0)
