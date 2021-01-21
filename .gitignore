@@ -4,9 +4,13 @@ target
 project/target
 project/project
 src/main/resources/comments
+src/test/resources/comments
 src/main/resources/ny_taxi_test_data/ny_taxi
+src/main/resources/ny_taxi_insights
+src/test/resources/ny_taxi_insights
 src/main/scala/com/data/GenerateTestData.scala
 docker
+logs
 *.html
 
 

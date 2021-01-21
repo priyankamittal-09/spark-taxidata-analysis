@@ -30,6 +30,9 @@ class MainSpec extends Specification with AfterAll {
 
         Test Case 5 Passed $calculateFareTest
 
+        Test Case 6 Passed $calculateNumberOfPickUpsPerZoneTest
+
+        Test Case 7 Passed $calculateNumberOfPickUpsPerBoroughTest
 
     """
 
@@ -69,13 +72,21 @@ class MainSpec extends Specification with AfterAll {
   ).toDF("h3_index", "zone", "borough", "location_id")
     .withColumn("h3_index", lower(conv($"h3_index",10,16)))
 
-
   val sample_taxiFareData = Seq(
     (21, 64.78, 2),
     (31, 113.96, 1)
   ).toDF("trip_distance", "average_total_fare", "number_of_trips")
 
+  val sample_numberOfPickUpsPerZoneDF = Seq(
+    ("Upper West Side South", 1),
+    ("Little Italy/NoLiTa", 1),
+    ("Union Sq", 1),
+    ("Penn Station/Madison Sq West", 1)
+  ).toDF("zone", "number_of_pickups")
 
+  val sample_numberOfPickUpsPerBoroughDF = Seq(
+    ("Manhattan", 8)
+  ).toDF("zone", "number_of_pickups")
 
   def readTaxiDataTest: MatchResult[mutable.Buffer[TaxiData]] = {
     logger.info("Test Case 1: Should read input parquet data file correctly")
@@ -143,6 +154,32 @@ class MainSpec extends Specification with AfterAll {
     val result = Main.calculateFare(sample_pick_drop_taxi_data, outputPath).run(spark).filter($"trip_distance" >20 )
     val calculated = result.collectAsList()
     val expected = sample_taxiFareData.collectAsList()
+    logger.info(s"Calculated: $calculated")
+    logger.info(s"Expected: $expected")
+    calculated.asScala must beEqualTo(expected.asScala)
+  }
+
+  def calculateNumberOfPickUpsPerZoneTest: MatchResult[mutable.Buffer[Row]] = {
+    println("Test Case 6: Should calculate number of pickups per zone correctly in the sample data")
+    val outputPath = "src/test/resources/ny_taxi_insights/insight2"
+    val encoderSchema = Encoders.product[PickupTaxiData].schema
+    val sample_pickup_taxi_data = ReadWriteUtils.readCSV(spark, encoderSchema, "src/test/resources/ny_taxi_data_large/ny_taxi_pickup_data/pickup.csv").as[PickupTaxiData]
+    val result = Main.calculateNumberOfPickUpsPerZone(sample_pickup_taxi_data.limit(6), outputPath).run(spark)
+    val calculated = result.collectAsList()
+    val expected = sample_numberOfPickUpsPerZoneDF.collectAsList()
+    logger.info(s"Calculated: $calculated")
+    logger.info(s"Expected: $expected")
+    calculated.asScala must beEqualTo(expected.asScala)
+  }
+
+  def calculateNumberOfPickUpsPerBoroughTest: MatchResult[mutable.Buffer[Row]] = {
+    println("Test Case 7: Should calculate number of pickups per borough correctly in the sample data")
+    val outputPath = "src/test/resources/ny_taxi_insights/insight3"
+    val encoderSchema = Encoders.product[PickupTaxiData].schema
+    val sample_pickup_taxi_data = ReadWriteUtils.readCSV(spark, encoderSchema, "src/test/resources/ny_taxi_data_large/ny_taxi_pickup_data/pickup.csv").as[PickupTaxiData]
+    val result = Main.calculateNumberOfPickUpsPerBorough(sample_pickup_taxi_data.limit(10), outputPath).run(spark)
+    val calculated = result.collectAsList()
+    val expected = sample_numberOfPickUpsPerBoroughDF.collectAsList()
     logger.info(s"Calculated: $calculated")
     logger.info(s"Expected: $expected")
     calculated.asScala must beEqualTo(expected.asScala)
