@@ -34,6 +34,12 @@ class MainSpec extends Specification with AfterAll {
 
         Test Case 7 Passed $calculateNumberOfPickUpsPerBoroughTest
 
+        Test Case 8 Passed $calculateDropOffsPerZoneStatsTest
+
+        Test Case 9 Passed $calculateDropOffsPerBoroughStatsTest
+
+        Test Case 10 Passed $calculateTopDropoffZonePerPickupZoneTest
+
     """
 
   Logger.getLogger("org").setLevel(Level.ERROR)
@@ -86,7 +92,26 @@ class MainSpec extends Specification with AfterAll {
 
   val sample_numberOfPickUpsPerBoroughDF = Seq(
     ("Manhattan", 8)
-  ).toDF("zone", "number_of_pickups")
+  ).toDF("borough", "number_of_pickups")
+
+  val sample_dropoffsPerZoneStatsDF = Seq(
+    ("Alphabet City", 5, 12.38, 2.04)
+  ).toDF("zone", "number_of_dropoffs", "average_total_fare", "average_trip_distance")
+
+  val sample_dropoffsPerBoroughStatsDF = Seq(
+    ("Manhattan", 8, 15.36, 3.04),
+    ("Queens", 2, 24.13, 6.54)
+  ).toDF("borough", "number_of_dropoffs", "average_total_fare", "average_trip_distance")
+
+  val sample_pickDropStatsDFWithRank = Seq(
+    ("Lenox Hill West", "Upper East Side South", 3, 1)
+  ).toDF("pickup_zone", "dropoff_zone", "number_of_dropoffs", "rank")
+
+
+  val sample_pick_drop_taxi_data = ReadWriteUtils.readCSV(spark, pickDropTaxiEncoderSchema, "src/test/resources/ny_taxi_data_large/ny_taxi_pickdrop_data/pick-drop.csv").as[PickDropTaxiData]
+  val sample_pickup_taxi_data = ReadWriteUtils.readCSV(spark, pickupTaxiEncoderSchema, "src/test/resources/ny_taxi_data_large/ny_taxi_pickup_data/pickup.csv").as[PickupTaxiData]
+  val sample_dropoff_taxi_data = ReadWriteUtils.readCSV(spark, dropOffTaxiEncoderSchema, "src/test/resources/ny_taxi_data_large/ny_taxi_dropoff_data/dropoff.csv").as[DropOffTaxiData]
+  val sample_filtered_taxidata = ReadWriteUtils.readCSV(spark, taxiEncoderSchema, "src/test/resources/ny_taxi_data_large/ny_taxi_filtered_data").as[TaxiData]
 
   def readTaxiDataTest: MatchResult[mutable.Buffer[TaxiData]] = {
     logger.info("Test Case 1: Should read input parquet data file correctly")
@@ -133,15 +158,13 @@ class MainSpec extends Specification with AfterAll {
     calculated.asScala must beEqualTo(expected.asScala)
   }
 
-
-
   def filteredTaxiLargeDataTest: MatchResult[mutable.Buffer[TaxiData]] = {
     logger.info("Test Case 4: Should filter out ids of taxi drivers who would like to be forgotten")
     val data_path = "src/test/resources/ny_taxi_data_large/ny_taxi"
     val rtbf_path = "src/test/resources/ny_taxi_data_large/ny_taxi_rtbf/rtbf_taxies.csv"
     val result = Main.filteredTaxiData(Main.readTaxiData(data_path).run(spark), Main.readRightToBeForgottenData(rtbf_path).run(spark)).run(spark)
     val calculated = result.collectAsList()
-    val expected = ReadWriteUtils.readCSV(spark, taxiEncoderSchema, "src/test/resources/ny_taxi_data_large/ny_taxi_filtered_data").as[TaxiData].collectAsList()
+    val expected = sample_filtered_taxidata.collectAsList()
     calculated.asScala must beEqualTo(expected.asScala)
   }
 
@@ -149,8 +172,6 @@ class MainSpec extends Specification with AfterAll {
     import spark.implicits._
     logger.info("Test Case 5: Should calculate the average total fare for each trip_distance rounded to 0 decimal places and the number of trips correctly")
     val outputPath = "src/test/resources/ny_taxi_insights/insight1"
-    val encoderSchema = Encoders.product[PickDropTaxiData].schema
-    val sample_pick_drop_taxi_data = ReadWriteUtils.readCSV(spark, encoderSchema, "src/test/resources/ny_taxi_data_large/ny_taxi_pickdrop_data/pick-drop.csv").as[PickDropTaxiData]
     val result = Main.calculateFare(sample_pick_drop_taxi_data, outputPath).run(spark).filter($"trip_distance" >20 )
     val calculated = result.collectAsList()
     val expected = sample_taxiFareData.collectAsList()
@@ -162,8 +183,6 @@ class MainSpec extends Specification with AfterAll {
   def calculateNumberOfPickUpsPerZoneTest: MatchResult[mutable.Buffer[Row]] = {
     println("Test Case 6: Should calculate number of pickups per zone correctly in the sample data")
     val outputPath = "src/test/resources/ny_taxi_insights/insight2"
-    val encoderSchema = Encoders.product[PickupTaxiData].schema
-    val sample_pickup_taxi_data = ReadWriteUtils.readCSV(spark, encoderSchema, "src/test/resources/ny_taxi_data_large/ny_taxi_pickup_data/pickup.csv").as[PickupTaxiData]
     val result = Main.calculateNumberOfPickUpsPerZone(sample_pickup_taxi_data.limit(6), outputPath).run(spark)
     val calculated = result.collectAsList()
     val expected = sample_numberOfPickUpsPerZoneDF.collectAsList()
@@ -173,13 +192,44 @@ class MainSpec extends Specification with AfterAll {
   }
 
   def calculateNumberOfPickUpsPerBoroughTest: MatchResult[mutable.Buffer[Row]] = {
-    println("Test Case 7: Should calculate number of pickups per borough correctly in the sample data")
+    println("Test Case 7: Should calculate number of pickups per borough correctly for the sample data")
     val outputPath = "src/test/resources/ny_taxi_insights/insight3"
-    val encoderSchema = Encoders.product[PickupTaxiData].schema
-    val sample_pickup_taxi_data = ReadWriteUtils.readCSV(spark, encoderSchema, "src/test/resources/ny_taxi_data_large/ny_taxi_pickup_data/pickup.csv").as[PickupTaxiData]
     val result = Main.calculateNumberOfPickUpsPerBorough(sample_pickup_taxi_data.limit(10), outputPath).run(spark)
     val calculated = result.collectAsList()
     val expected = sample_numberOfPickUpsPerBoroughDF.collectAsList()
+    logger.info(s"Calculated: $calculated")
+    logger.info(s"Expected: $expected")
+    calculated.asScala must beEqualTo(expected.asScala)
+  }
+
+  def calculateDropOffsPerZoneStatsTest: MatchResult[mutable.Buffer[Row]] = {
+    println("Test Case 8: Should calculate drop off statistics for Alphabet City correctly for the sample data")
+    val outputPath = "src/test/resources/ny_taxi_insights/insight4"
+    val result = Main.calculateDropOffsPerZoneStats(sample_dropoff_taxi_data.filter($"dropoff_zone" === "Alphabet City"), outputPath).run(spark)
+    val calculated = result.collectAsList()
+    val expected = sample_dropoffsPerZoneStatsDF.collectAsList()
+    logger.info(s"Calculated: $calculated")
+    logger.info(s"Expected: $expected")
+    calculated.asScala must beEqualTo(expected.asScala)
+  }
+
+  def calculateDropOffsPerBoroughStatsTest: MatchResult[mutable.Buffer[Row]] = {
+    println("Test Case 9: Should calculate drop off statistics per borough correctly for the sample data")
+    val outputPath = "src/test/resources/ny_taxi_insights/insight5"
+    val result = Main.calculateDropOffsPerBoroughStats(sample_dropoff_taxi_data.limit(10), outputPath).run(spark)
+    val calculated = result.collectAsList()
+    val expected = sample_dropoffsPerBoroughStatsDF.collectAsList()
+    logger.info(s"Calculated: $calculated")
+    logger.info(s"Expected: $expected")
+    calculated.asScala must beEqualTo(expected.asScala)
+  }
+
+  def calculateTopDropoffZonePerPickupZoneTest: MatchResult[mutable.Buffer[Row]] = {
+    println("Test Case 10: Should calculate top drop off zones for Lenox Hill West for the sample data")
+    val outputPath = "src/test/resources/ny_taxi_insights/insight6"
+    val result = Main.calculateTopDropoffZonePerPickupZone(sample_pick_drop_taxi_data.filter($"pickup_zone" === "Lenox Hill West"), outputPath).run(spark)
+    val calculated = result.limit(1).collectAsList()
+    val expected = sample_pickDropStatsDFWithRank.collectAsList()
     logger.info(s"Calculated: $calculated")
     logger.info(s"Expected: $expected")
     calculated.asScala must beEqualTo(expected.asScala)

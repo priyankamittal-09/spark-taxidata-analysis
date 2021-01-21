@@ -1,7 +1,7 @@
 package com
 
 import cats.data.Reader
-import com.data.model.TaxiData
+import com.data.model.{DropOffTaxiData, PickDropTaxiData, PickupTaxiData, TaxiData}
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.{Encoders, SparkSession}
 import org.apache.spark.sql.types.{DataTypes, DoubleType, IntegerType, StringType, StructField, StructType}
@@ -16,6 +16,10 @@ package object data {
     .getOrCreate()
 
   val taxiEncoderSchema = Encoders.product[TaxiData].schema
+  val pickDropTaxiEncoderSchema = Encoders.product[PickDropTaxiData].schema
+  val pickupTaxiEncoderSchema = Encoders.product[PickupTaxiData].schema
+  val dropOffTaxiEncoderSchema = Encoders.product[DropOffTaxiData].schema
+
 
   val zoneSchema = new StructType()
     .add("h3_index", StringType)

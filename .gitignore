@@ -12,6 +12,7 @@ src/main/scala/com/data/GenerateTestData.scala
 docker
 logs
 *.html
+*.zip
 
 
 

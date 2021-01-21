@@ -271,7 +271,7 @@ def calculateNumberOfPickUpsPerZone(ny_taxi_pickup_data: Dataset[PickupTaxiData]
   // TODO Insight 4: Total number of dropoffs, average total cost and average distance in each zone.
   //  Write the output as a single csv with headers. The resulting output should have 4 columns: zone, number_of_dropoffs, average_total_fare and average_trip_distance.
 
-  def calculateDropOffsPerZoneStats(ny_taxi_dropoff_data: Dataset[DropOffTaxiData], outputPath: String): SparkSessionReader[DataFrame] =
+  def calculateDropOffsPerZoneStats(ny_taxi_dropoff_data: Dataset[DropOffTaxiData], outputPath: String)(implicit logger:Logger): SparkSessionReader[DataFrame] =
     SparkSessionReader { spark =>
       val dropoffsPerZoneStatsDF = ny_taxi_dropoff_data
         .filter($"dropoff_zone".isNotNull )
@@ -295,7 +295,7 @@ def calculateNumberOfPickUpsPerZone(ny_taxi_pickup_data: Dataset[PickupTaxiData]
   // TODO Insight 5: Total number of dropoffs, average total cost and average distance in each borough.
   // Write the output as a single csv with headers. The resulting output should have 4 columns: borough, number_of_dropoffs, average_total_fare and average_trip_distance.
 
-  def calculateDropOffsPerBoroughStats(ny_taxi_dropoff_data: Dataset[DropOffTaxiData], outputPath: String): SparkSessionReader[DataFrame] =
+  def calculateDropOffsPerBoroughStats(ny_taxi_dropoff_data: Dataset[DropOffTaxiData], outputPath: String)(implicit logger:Logger): SparkSessionReader[DataFrame] =
     SparkSessionReader { spark =>
       val dropoffsPerBoroughStatsDF = ny_taxi_dropoff_data
         .filter($"dropoff_borough".isNotNull )
@@ -318,7 +318,7 @@ def calculateNumberOfPickUpsPerZone(ny_taxi_pickup_data: Dataset[PickupTaxiData]
   // TODO Insight 6: For each pickup zone calculate the top 5 dropoff zones ranked by number of trips.
   // Write output as a single csv with headers. The resulting output should have 4 columns: pickup_zone, dropoff_zone, number_of_dropoffs and rank.
 
-  def calculateTopDropoffZonePerPickupZone(taxi_pickup_dropoff_data: Dataset[PickDropTaxiData], outputPath: String): SparkSessionReader[DataFrame] =
+  def calculateTopDropoffZonePerPickupZone(taxi_pickup_dropoff_data: Dataset[PickDropTaxiData], outputPath: String)(implicit logger:Logger): SparkSessionReader[DataFrame] =
     SparkSessionReader { spark =>
       val pickDropStatsDF = taxi_pickup_dropoff_data
         .withColumn("pickup_zone-dropoff_zone",concat(col("pickup_zone"),lit('-'),col("dropoff_zone")))
@@ -338,6 +338,8 @@ def calculateNumberOfPickUpsPerZone(ny_taxi_pickup_data: Dataset[PickupTaxiData]
         .withColumn("rank", rank().over(partitionWindowByPickUpZone))
         .filter($"rank" <= 5)
         .drop("pickup_zone-dropoff_zone")
+        .select("pickup_zone", "dropoff_zone", "number_of_dropoffs", "rank")
+
       logger.info("Top 5 dropoff zones per pickup zone ranked by number of trips")
       pickDropStatsDFWithRank.printSchema()
       pickDropStatsDFWithRank.show(false)
@@ -349,7 +351,7 @@ def calculateNumberOfPickUpsPerZone(ny_taxi_pickup_data: Dataset[PickupTaxiData]
   // TODO Insight 7: Calculate the number of trips for each date -> pickup hour, (using tpep_pickup_datetime), then calculate the average number of trips by hour of day.
   // The resulting output should have 2 columns: hour_of_day and average_trips.
 
-  def calculateAverageNumberOfTripsPerHourOfDay(ny_taxi_filtered: Dataset[TaxiData]): SparkSessionReader[DataFrame] =
+  def calculateAverageNumberOfTripsPerHourOfDay(ny_taxi_filtered: Dataset[TaxiData])(implicit logger:Logger): SparkSessionReader[DataFrame] =
     SparkSessionReader { spark =>
       val numberOfTripsEveryHourDF = ny_taxi_filtered
         .withColumn("hour",hour(col("tpep_pickup_datetime")))
@@ -369,7 +371,6 @@ def calculateNumberOfPickUpsPerZone(ny_taxi_pickup_data: Dataset[PickupTaxiData]
           .agg(avg("number_of_trips").as("average_trips"))
           .orderBy("hour_of_day")
         .withColumn("average_trips", round(col("average_trips"), 4))
-
 
       logger.info("Average number of trips each hour of the day")
       AverageNumberOfTripsEveryHourDF.printSchema()
