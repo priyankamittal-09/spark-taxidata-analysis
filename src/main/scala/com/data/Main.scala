@@ -233,7 +233,7 @@ object Main extends App{
 
   // TODO Insight 2: Total number of pickups in each zone. Write the output as a single csv with headers. The resulting output should have 2 columns: zone and number_of_pickups.
 
-def calculateNumberOfPickUpsPerZone(ny_taxi_pickup_data: Dataset[PickupTaxiData], outputPath: String): SparkSessionReader[DataFrame] =
+def calculateNumberOfPickUpsPerZone(ny_taxi_pickup_data: Dataset[PickupTaxiData], outputPath: String)(implicit logger:Logger): SparkSessionReader[DataFrame] =
   SparkSessionReader { spark =>
     val numberOfPickUpsPerZoneDF = ny_taxi_pickup_data
       .filter($"pickup_zone".isNotNull )
@@ -251,7 +251,7 @@ def calculateNumberOfPickUpsPerZone(ny_taxi_pickup_data: Dataset[PickupTaxiData]
 
   // TODO Insight 3: Total number of pickups in each borough. Write the output as a single csv with headers. The resulting output should have 2 columns: borough and number_of_pickups.
 
-  def calculateNumberOfPickUpsPerBorough(ny_taxi_pickup_data: Dataset[PickupTaxiData], outputPath: String): SparkSessionReader[DataFrame] =
+  def calculateNumberOfPickUpsPerBorough(ny_taxi_pickup_data: Dataset[PickupTaxiData], outputPath: String)(implicit logger:Logger): SparkSessionReader[DataFrame] =
     SparkSessionReader { spark =>
       val numberOfPickUpsPerBoroughDF = ny_taxi_pickup_data
         .filter($"pickup_borough".isNotNull )
